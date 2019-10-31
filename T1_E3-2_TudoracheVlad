@@ -1,0 +1,8 @@
+%functia pentru E3
+function [m, v, x]= F3(z)
+   m=mean(real(z))  %media valorilor reale ale lui Z
+   for i=1:10  %parcurgem vectorul de numere complexe
+       v(i)=z(i)*z(i); %creeam un nou vector si introducem in el valorile ridicate la patrat ale vectorului complex
+   end
+   v %afisam vectroul obtinut
+   x=z*transpose(z)  %inmultim vectorul cu transpusul lui si afisam rezultatul
