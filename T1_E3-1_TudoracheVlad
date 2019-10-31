@@ -1,0 +1,5 @@
+%E3
+a=randn(1,10); %generam partea reala a numarului complex
+b=randn(1,10); %generam partea imaginara a nr complex
+z=complex(a,b) % compunem vectorul de numere complexe
+F3(z) %aplicam functia pe numarul complex
