@@ -5,4 +5,4 @@ function [m, v, x]= F3(z)
        v(i)=z(i)*z(i); %creeam un nou vector si introducem in el valorile ridicate la patrat ale vectorului complex
    end
    v %afisam vectroul obtinut
-   x=z*transpose(z)  %inmultim vectorul cu transpusul lui si afisam rezultatul
+   x=transpose(z)*z  %inmultim vectorul cu transpusul lui si afisam rezultatul
