@@ -1,0 +1,21 @@
+f = 0.2; %perioada in secunde^-1 sau Hz
+Amp = 1.5; %amplitudinea (valoarea maxima si minima)
+offset= -0.5;%deplasarea pe verticala a semnalului
+
+t1 = 0:0.002:10; %timpul 
+tr_wave = offset + Amp*sawtooth(2*pi*f.*t1,1);%generarea propriuzisa
+figure(1) %rezolutie de 2ms
+plot(t1, tr_wave),xlabel('t (s)'),ylabel('A') ,grid
+
+t2 = 0:0.02:10; %timpul 
+tr_wave = offset + Amp*sawtooth(2*pi*f.*t2,1);%generarea propriuzisa
+figure(2)%rezoutie de 20ms
+plot(t2, tr_wave),xlabel('t (s)'),ylabel('A') ,grid
+
+t3 = 0:0.2:10; %timpul 
+tr_wave = offset + Amp*sawtooth(2*pi*f.*t3,1);%generarea propriuzisa
+figure(3)%rezolutie de 2 ms
+plot(t3, tr_wave),xlabel('t (s)'),ylabel('A') ,grid
+
+%am setat timpul astfel incat sa fie afisate 2 perioade
+%pentru a se observa mai bine semnalul
