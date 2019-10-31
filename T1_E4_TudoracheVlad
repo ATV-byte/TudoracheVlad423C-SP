@@ -1,0 +1,23 @@
+%E4
+%a
+z=[0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+n=0:20;
+m=-5:15;
+figure(2) %creem figura in care ni se afiseaza sub plot urile; subplot ne afiseaza 2 grafice in aceeasi fereastra
+subplot(2,1,1),stem(n,z),grid 
+subplot(2,1,2),stem(m,z),grid
+%b
+t=abs(10-n); %abs este valoarea absoluta/modul
+figure(1)
+plot(n,t), grid
+hold on
+%c
+k=-15:0.2:15
+a=sin( (pi/17)*k )
+plot(k,a),grid
+i=0:0.2:50
+b=cos((pi/sqrt(23) )*i)
+plot(i,b),xlabel('n') ,grid
+hold off
+
+%am folosit hold on/hold off pentru a afisa mai multe grafice pe aceeasi figura
