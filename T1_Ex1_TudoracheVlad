@@ -1,0 +1,22 @@
+freq = 0.5; %frecventa in secunde^-1 sau Hz
+offset = -0.25; %offsetul, adica deplasarea intregului semnal in sus sau in jos cu o valoare
+amp = 0.75; %amplitudinea (valoarea maxima si valoarea minima
+duty = 25; %factorul de umplere adica timpul pentru care semnalul este pozitiv/perioada
+
+t1 = 0:0.002:4; % timpul
+sq_wav = offset+amp*square(2*pi*freq.*t1,duty); %generearea semnalului folosind toate componentele
+figure(1) %rezolutie 2ms
+plot(t1,sq_wav), xlabel('t (s)'), ylabel('A'),grid
+
+t2 = 0:0.02:4; % timpul
+sq_wav = offset+amp*square(2*pi*freq.*t2,duty);
+figure(2) %rezolutie 20ms
+plot(t2,sq_wav), xlabel('t (s)'), ylabel('A'),grid
+
+t3 = 0:0.2:4; % timpul
+sq_wav = offset+amp*square(2*pi*freq.*t3,duty);
+figure(3) %rezolutie 200ms
+plot(t3,sq_wav), xlabel('t (s)'), ylabel('A'),grid
+
+%pentru a modifica numarul de perioade putem modifica timpul
+%de exemplu daca inlocuim 2 cu 4 se vor afisa 2 perioade ale semnalului
