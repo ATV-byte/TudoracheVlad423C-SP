@@ -1,0 +1,45 @@
+t=0:0.02:24;   % aici avem timpul setat pentru lungimea semnalului in cazul meu 24s cu rezolutia 0.02
+w=2*pi*0.025;  % pulsatia, care e in conformitate cu perioada de 40s ( respectiv frecventa de 0.025Hz)
+A=1; %amplitudinea
+a=2.5*A/pi; %coeficient folosit mai jos in aproximarea semnalului folosind fourier
+y=0; % initializam semnalul "creeat" folosind fourier cu 0
+n=50; %numarul de coeficienti
+S = 1*sawtooth(2*pi*0.025.*t-4.72,0.5);  % creem semnalul original,  am introdus un defazaj pentru a se suprapune cat mai bine cu semnalul aproximat
+plot(t,S) %afisam semnalul original
+title('Semnal triunghiular')
+xlabel('Timp [s]')
+ylabel('A [V]')
+hold
+for i=1:n
+   y=y+a*( (((-1)^((i-1)/2))/(i^2)) * sin(i*w*t) );
+end 
+%folosind o formula obtinuta la cusrul de SS reusim sa recreem functia
+%folosind 50 de termeni
+plot(t,y);
+legend('functia generata', 'functia aproximata cu Fourier')
+xk=[];
+for k=1:n
+ fun= @(t) 1*sawtooth(2*pi*0.025.*t,0.5).*exp(-1i*k*w.*t); 
+ xk=0.025*integral(fun,0,40)
+end % aflam coeficientii complecsi ai semnalului conform functiei din ppt
+%--------------------------------------------------------------------------
+figure(2)
+Fs = 1;            % Sampling frequency                    
+T = 1/Fs;             % Sampling period       
+L = 24;             % Length of signal
+t1 = (0:L-1)*T;        % Time vector
+s=1*sawtooth(2*pi*0.025.*t1,0.5); % creem semnalul original
+Y = fft(s);
+NFFT=L;
+f=Fs/2*linspace(-1,1,NFFT);
+stem(f/0.025,2*abs(([Y(NFFT/2+2:end) Y(1:NFFT/2+1)]))/L) %folosind FFT din matlab si normand termenii afisam spectrul
+title('Spectrul dublu al functiei')
+xlabel('k')
+ylabel('A [V]')
+
+
+%In prima parte am folosit un rezultat "faimos" pentru aproximarea
+%semnalului triunghiular deoarece mi s-a parut mai scurt, iar acest
+%rezultat l-am folosit de mai multe ori in cursul de SS.
+%in a doua parte alaturi de documentatia mathworks si librariei fft am
+%reusit sa afisez spectrul semnalului (cu o oarecare eroare)
