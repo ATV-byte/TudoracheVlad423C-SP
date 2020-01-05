@@ -1,4 +1,4 @@
 # TudoracheVlad423C-SP
-Aceasta este TEMA1 pentru SP.
+Aceasta este TEMA pentru SP.
 
 ETTI-2019-SemestrulI
